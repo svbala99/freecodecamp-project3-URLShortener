@@ -13,19 +13,19 @@ var app = express();
 // Basic Configuration
 var port = process.env.PORT || 3000;
 
-/** this project needs a db !! **/
+//////////////////////////////////MONGO CONNECTION USING MONGOOSE ODM//////////////////////////////////////
 
 mongoose.connect(process.env.URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
-// schema for url
-const shortUrlSchema = new mongoose.Schema({
+/////////////////////////// schema for url//////////a number against the URL given......////////////////////////////////
+const mySchema = new mongoose.Schema({
   original_url: String,
   short_url: Number
 });
-// schema into model
-const ShortUrl = mongoose.model("ShortUrl", shortUrlSchema);
+////////////////////////////////////APPLY schema into model/////////////////////////////////////////////////
+const ShortUrl = mongoose.model("ShortUrl", mySchema);
 
 app.use(cors());
 
